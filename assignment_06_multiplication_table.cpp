@@ -57,3 +57,66 @@
 #include <iostream>
 using namespace std;
 
+// Function prototypes
+void printSingleTable(int num);
+void printMultipleTables(int n);
+
+// Part A: Prints the multiplication table for a single number from 1 to 12
+void printSingleTable(int num) {
+    if (num <= 0) {
+        cout << "Error: Input must be a positive integer." << endl;
+        return;
+    }
+
+    cout << "Multiplication Table for " << num << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << num << " x " << i << " = " << (num * i) << endl;
+    }
+}
+
+// Part B: Prints multiplication tables for every number from 1 to N
+void printMultipleTables(int n) {
+    if (n <= 0) {
+        cout << "Error: N must be a positive integer." << endl;
+        return;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        printSingleTable(i);
+        
+        // Print separator line between tables
+        if (i < n) {
+            cout << "----------------------------------------" << endl;
+        }
+    }
+}
+
+int main() {
+    int singleNum, maxN;
+
+    // --- PART A ---
+    cout << "Enter a number for single table: ";
+    cin >> singleNum;
+    
+    if (singleNum <= 0) {
+        cout << "Error: Input must be a positive integer." << endl;
+        return 0; // Stop execution if invalid input
+    }
+    
+    printSingleTable(singleNum);
+
+    cout << endl;
+
+    // --- PART B ---
+    cout << "Enter a number N for tables from 1 to N: ";
+    cin >> maxN;
+
+    if (maxN <= 0) {
+        cout << "Error: N must be a positive integer." << endl;
+        return 0; // Stop execution if invalid input
+    }
+
+    printMultipleTables(maxN);
+
+    return 0;
+}
